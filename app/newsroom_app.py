@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import re
 import sqlite3
+import os 
+import json
 from io import BytesIO
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -17,7 +19,9 @@ import matplotlib.font_manager as fm
 
 def read_db_news_data():
 
-    DB_PATH = '/home/kexin/database/news.db'
+    DB_PATH = os.path.join(os.path.dirname(__file__), "database/news.db")
+
+    # DB_PATH = '/home/kexin/database/news.db'
     TABLE_NAME = 'tb_news_clipping'
 
     conn = sqlite3.connect(DB_PATH,timeout=20)
