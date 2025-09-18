@@ -17,7 +17,7 @@ import matplotlib.font_manager as fm
 
 def read_db_news_data():
 
-    DB_PATH = './database/news.db'
+    DB_PATH = '/home/kexin/database/news.db'
     TABLE_NAME = 'tb_news_clipping'
 
     conn = sqlite3.connect(DB_PATH,timeout=20)
@@ -29,7 +29,7 @@ def read_db_news_data():
 
     # 결과 fetch 후 DataFrame 변환
     rows = cursor.fetchall()
-    df = pd.DataFrame(rows, columns=columns)
+    df = pd.DataFrame(rows, columns=columns).drop_duplicates(subset=['org_link'], keep='first', inplace=False).reset_index(drop=True)
     print(df)
 
     # conn.colse()
@@ -56,7 +56,7 @@ st.sidebar.header("🔍상세조건 검색")
 # 기준일자 선택 (Selectbox)
 date_filter = st.sidebar.selectbox(
     "기준일자",
-    options=["전체"] + list(df['date'].unique())
+    options=["전체"] + sorted(list(df['date'].unique()))
 )
 
 # 감정 선택 (Selectbox)
