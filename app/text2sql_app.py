@@ -21,14 +21,15 @@ client = genai.Client(api_key=gemini_key)
 schema = """
 Table: tb_stock_prices
 Columns: 
-        date TEXT NOT NULL,
-        comp_nm text NOT NULL,
-        stock_cd TEXT NOT NULL,
-        close num,
-        high num,
-        low num,
-        open num,
-        volume num, create_dt DATETIME,
+        date TEXT NOT NULL comment 기준일,
+        comp_nm text NOT NULL comment 회사명,
+        stock_cd TEXT NOT NULL comment 주식코드,
+        close num comment 종가,
+        high num comment 최고가,
+        low num comment 최저가,
+        open num comment 시장가,
+        volume num comment 거래수, 
+        create_dt DATETIME,
         PRIMARY KEY (date,stock_cd)
 """
 
