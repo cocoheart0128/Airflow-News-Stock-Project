@@ -19,7 +19,11 @@ import matplotlib.font_manager as fm
 
 def read_db_news_data():
 
-    DB_PATH = os.path.join(os.path.dirname(__file__), "database/news.db")
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # database/news.db 경로
+    DB_PATH = os.path.join(BASE_DIR, "database", "news.db")
+
+    # DB_PATH = os.path.join(os.path.dirname(__file__), "database/news.db")
     print(DB_PATH)
 
     # DB_PATH = '/home/kexin/database/news.db'
