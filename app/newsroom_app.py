@@ -132,6 +132,13 @@ with tab1:
     ax3.set_title("일자별 뉴스 건수",fontproperties=fontprop)
     ax3.set_xlabel("날짜",fontproperties=fontprop)
     ax3.set_ylabel("뉴스 건수",fontproperties=fontprop)
+
+        # x축 눈금 한글 폰트 적용
+    for label in ax3.get_xticklabels():
+        label.set_fontproperties(fontprop)
+    for label in ax3.get_yticklabels():
+        label.set_fontproperties(fontprop)
+    
     plt.xticks(rotation=45)
     st.pyplot(fig3)
 
@@ -147,6 +154,14 @@ with tab1:
         ax.set_title("기업별 뉴스 건수",fontproperties=fontprop)
         ax.set_ylabel("뉴스 건수",fontproperties=fontprop)
         ax.set_xlabel("회사",fontproperties=fontprop)
+
+        # x, y축 눈금 한글 폰트 적용
+        for label in ax.get_xticklabels():
+            label.set_fontproperties(fontprop)
+        for label in ax.get_yticklabels():
+            label.set_fontproperties(fontprop)
+
+        
         st.pyplot(fig)
     
     with col2:
@@ -155,6 +170,13 @@ with tab1:
         fig2, ax2 = plt.subplots(figsize=(4,4))
         ax2.pie(sentiment_counts, labels=sentiment_counts.index, autopct='%1.1f%%', startangle=90, colors=['#66c2a5','#fc8d62','#8da0cb'])
         ax2.set_title("감정 비율",fontproperties=fontprop)
+
+        # x, y축 눈금 한글 폰트 적용
+        for label in ax2.get_xticklabels():
+            label.set_fontproperties(fontprop)
+        for label in ax2.get_yticklabels():
+            label.set_fontproperties(fontprop)
+
         st.pyplot(fig2)
 
 
