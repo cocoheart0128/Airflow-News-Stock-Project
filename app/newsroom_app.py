@@ -129,9 +129,9 @@ with tab1:
     date_counts = filtered_df.groupby('date').size().reset_index(name='뉴스 건수')
     fig3, ax3 = plt.subplots(figsize=(5,2))
     sns.lineplot(data=date_counts, x='date', y='뉴스 건수', marker='o', ax=ax3)
-    ax3.set_title("일자별 뉴스 건수")
-    ax3.set_xlabel("날짜")
-    ax3.set_ylabel("뉴스 건수")
+    ax3.set_title("일자별 뉴스 건수",fontproperties=fontprop)
+    ax3.set_xlabel("날짜",fontproperties=fontprop)
+    ax3.set_ylabel("뉴스 건수",fontproperties=fontprop)
     plt.xticks(rotation=45)
     st.pyplot(fig3)
 
@@ -144,9 +144,9 @@ with tab1:
         
         fig, ax = plt.subplots(figsize=(6,4))
         sns.barplot(data=company_counts, x='회사', y='뉴스 건수', ax=ax, palette='Set2')
-        ax.set_title("기업별 뉴스 건수")
-        ax.set_ylabel("뉴스 건수")
-        ax.set_xlabel("회사")
+        ax.set_title("기업별 뉴스 건수",fontproperties=fontprop)
+        ax.set_ylabel("뉴스 건수",fontproperties=fontprop)
+        ax.set_xlabel("회사",fontproperties=fontprop)
         st.pyplot(fig)
     
     with col2:
@@ -154,7 +154,7 @@ with tab1:
         sentiment_counts = filtered_df['ai_sentiment'].value_counts()
         fig2, ax2 = plt.subplots(figsize=(4,4))
         ax2.pie(sentiment_counts, labels=sentiment_counts.index, autopct='%1.1f%%', startangle=90, colors=['#66c2a5','#fc8d62','#8da0cb'])
-        ax2.set_title("감정 비율")
+        ax2.set_title("감정 비율",fontproperties=fontprop)
         st.pyplot(fig2)
 
 
