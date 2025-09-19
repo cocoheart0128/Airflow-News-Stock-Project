@@ -12,7 +12,8 @@ import matplotlib.font_manager as fm
 
 
 # # 설치한 나눔폰트 사용
-# font_path = "/usr/share/fonts/truetype/nanum/NanumGothicCoding.ttf"  # 설치한 폰트 경로
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# font_path = os.path.join(BASE_DIR, "fonts", "news.db")
 # font_prop = fm.FontProperties(fname=font_path)
 # plt.rcParams['font.family'] = font_prop.get_name()
 # plt.rcParams['axes.unicode_minus'] = False  # 마이너스 깨짐 방지
