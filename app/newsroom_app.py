@@ -200,45 +200,82 @@ with tab2:
 
     col_count, col_toggle, col_file, col_download = st.columns([0.3, 0.2, 0.2, 0.3])
 
-    # 선택 건수 표시
+    col_count, col_toggle, col_file, col_download = st.columns([0.3, 0.2, 0.2, 0.3])
+
     with col_count:
         selected_count_placeholder = st.empty()
         selected_count_placeholder.write(f"##### **총 {len(filtered_df)}건  선택 {len(st.session_state.selected_news)}건**")
-
-    # 전체 선택/해제 토글 버튼
-    with col_count:
-        # 버튼 상태를 session_state에 저장
+    
+    with col_toggle:
         if 'select_all' not in st.session_state:
             st.session_state.select_all = False
-
         if st.button("전체선택/해제"):
             if not st.session_state.select_all:
-                st.session_state.selected_news = set(filtered_df.index)  # 전체 선택
+                st.session_state.selected_news = set(filtered_df.index)
                 st.session_state.select_all = True
             else:
-                st.session_state.selected_news = set()  # 전체 해제
+                st.session_state.selected_news = set()
                 st.session_state.select_all = False
-
-    # 파일 형식 선택
+    
     with col_file:
-        file_format = st.selectbox("파일 형식", ["CSV", "Excel"], key="file_format_select")
-
-    # 다운로드 버튼
+        file_format = st.selectbox("", ["CSV", "Excel"], key="file_format_select")  # 라벨 지우면 높이 맞춤
+    
     with col_download:
         if st.session_state.selected_news:
             download_df = filtered_df.loc[filtered_df.index.isin(st.session_state.selected_news)]
-            
             if file_format == "CSV":
                 data = download_df.to_csv(index=False).encode("utf-8-sig")
                 st.download_button("📥 다운로드", data=data, file_name="selected_news.csv", mime="text/csv")
-            elif file_format == "Excel":
+            else:
                 output = BytesIO()
                 with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
                     download_df.to_excel(writer, index=False, sheet_name="News")
                 st.download_button("📥 다운로드", data=output.getvalue(), file_name="selected_news.xlsx",
-                                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                                  mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         else:
             st.info("다운로드할 뉴스를 선택하세요.")
+
+
+    
+    # # 선택 건수 표시
+    # with col_count:
+    #     selected_count_placeholder = st.empty()
+    #     selected_count_placeholder.write(f"##### **총 {len(filtered_df)}건  선택 {len(st.session_state.selected_news)}건**")
+
+    # # 전체 선택/해제 토글 버튼
+    # with col_count:
+    #     # 버튼 상태를 session_state에 저장
+    #     if 'select_all' not in st.session_state:
+    #         st.session_state.select_all = False
+
+    #     if st.button("전체선택/해제"):
+    #         if not st.session_state.select_all:
+    #             st.session_state.selected_news = set(filtered_df.index)  # 전체 선택
+    #             st.session_state.select_all = True
+    #         else:
+    #             st.session_state.selected_news = set()  # 전체 해제
+    #             st.session_state.select_all = False
+
+    # # 파일 형식 선택
+    # with col_file:
+    #     file_format = st.selectbox("파일 형식", ["CSV", "Excel"], key="file_format_select")
+
+    # # 다운로드 버튼
+    # with col_download:
+    #     if st.session_state.selected_news:
+    #         download_df = filtered_df.loc[filtered_df.index.isin(st.session_state.selected_news)]
+            
+    #         if file_format == "CSV":
+    #             data = download_df.to_csv(index=False).encode("utf-8-sig")
+    #             st.download_button("📥 다운로드", data=data, file_name="selected_news.csv", mime="text/csv")
+    #         elif file_format == "Excel":
+    #             output = BytesIO()
+    #             with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
+    #                 download_df.to_excel(writer, index=False, sheet_name="News")
+    #             st.download_button("📥 다운로드", data=output.getvalue(), file_name="selected_news.xlsx",
+    #                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    #     else:
+    #         st.info("다운로드할 뉴스를 선택하세요.")
 
     # ========================
     # 뉴스 카드 렌더링
