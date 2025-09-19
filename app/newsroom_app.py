@@ -122,6 +122,7 @@ def strip_html(text):
     return clean
 
 tab1, tab2 = st.tabs(["뉴스 통계", "뉴스 클리핑"])
+st.set_page_config(layout="wide")
 
 with tab1:
 
