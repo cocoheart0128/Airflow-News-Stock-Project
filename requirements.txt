@@ -16,13 +16,13 @@ matplotlib
 seaborn
 
 # AI / NLP
-google-genai==1.32.0
-openai==1.82.0
-langchain==0.3.13
-langchain-community==0.3.23
-langchain-core==0.3.27
+google-genai
+openai
+langchain
+langchain-community
+langchain-core
 
 # Utils
-requests==2.32.3
-tqdm==4.67.1
-python-dotenv==1.1.0
+requests
+tqdm
+python-dotenv
