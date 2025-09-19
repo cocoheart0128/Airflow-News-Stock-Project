@@ -168,14 +168,23 @@ with tab1:
         # 2️⃣ 감정 비율 파이차트
         sentiment_counts = filtered_df['ai_sentiment'].value_counts()
         fig2, ax2 = plt.subplots(figsize=(4,4))
-        ax2.pie(sentiment_counts, labels=sentiment_counts.index, autopct='%1.1f%%', startangle=90, colors=['#66c2a5','#fc8d62','#8da0cb'])
+
+        # pie chart
+        wedges, texts, autotexts = ax2.pie(
+            sentiment_counts,
+            labels=sentiment_counts.index,
+            autopct='%1.1f%%',
+            startangle=90,
+            colors=['#66c2a5','#fc8d62','#8da0cb']
+        )
+
         ax2.set_title("감정 비율",fontproperties=fontprop)
 
-        # x, y축 눈금 한글 폰트 적용
-        for label in ax2.get_xticklabels():
-            label.set_fontproperties(fontprop)
-        for label in ax2.get_yticklabels():
-            label.set_fontproperties(fontprop)
+        # pie chart 레이블 한글 적용
+        for t in texts:       # 항목 이름
+            t.set_fontproperties(fontprop)
+        for at in autotexts:  # 퍼센트 숫자
+            at.set_fontproperties(fontprop)
 
         st.pyplot(fig2)
 
