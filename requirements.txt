@@ -2,34 +2,26 @@
 apache-airflow==3.0.6
 
 # Web App
-streamlit==1.45.1
-fastapi==0.116.1
-uvicorn==0.35.0
-gunicorn==23.0.0
-Flask==3.1.2
+streamlit
 
 # Data
-pandas==2.2.3
-numpy==2.2.5
-pyarrow==20.0.0
-SQLAlchemy==1.4.54
-yfinance==0.2.65
+pandas
+numpy
+pyarrow
+SQLAlchemy
+yfinance
 
 # Visualization
-matplotlib==3.10.6
-seaborn==0.13.2
-altair==5.5.0
-graphviz==0.21
+matplotlib
+seaborn
 
 # AI / NLP
-anthropic==0.51.0
 google-genai==1.32.0
 openai==1.82.0
 langchain==0.3.13
 langchain-community==0.3.23
 langchain-core==0.3.27
 langchain-text-splitters==0.3.2
-langsmith==0.2.5
 
 # Utils
 requests==2.32.3
