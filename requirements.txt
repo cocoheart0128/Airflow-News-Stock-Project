@@ -26,3 +26,4 @@ langchain-core
 requests
 tqdm
 python-dotenv
+fonts-nanum
