@@ -11,7 +11,9 @@ class ResQuery(BaseModel):
 
 
 ##config
-DB_PATH = '/home/kexin/database/news.db'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# database/news.db 경로
+DB_PATH = os.path.join(BASE_DIR, "database", "news.db")
 gemini_key = os.environ["GEMINI_API_KEY"]
 client = genai.Client(api_key=gemini_key)
 
